@@ -5,7 +5,7 @@
 #define BUFFER_SIZE 20
 #define NUM_X 5
 
-#if 0
+#if 1
 void status_print(char * output){
     puts("Memory status");
     printf("[[ %s ]]\n", output);
@@ -142,6 +142,7 @@ int main(void)
     printf("%s\n", string);
     string = realloc(string, 10); //크기를 재설정했을 때
     printf("%s\n", string); //문자열 정보가 남아 있는지 확인 -> 남아 있음
+    free(string);
     return 0;
 }
 #endif // 1
