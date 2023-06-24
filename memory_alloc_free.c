@@ -12,40 +12,40 @@ void status_print(char * output){
 }
 
 int FIRST_FIT_ALLOCATION(char* memory_test_input, char data, char data_size){
-    //Á¦´ë·Î ÇÒ´çµÇ¸é ÀÎµ¦½º¹øÈ£¸¦ Ãâ·Â ±×·¸Áö¾ÊÀ¸¸é  -1À» Ãâ·Â
+    //ì œëŒ€ë¡œ í• ë‹¹ë˜ë©´ ì¸ë±ìŠ¤ë²ˆí˜¸ë¥¼ ì¶œë ¥ ê·¸ë ‡ì§€ì•Šìœ¼ë©´  -1ì„ ì¶œë ¥
     for(int i = 0; i < data_size; i++)
     {
       int val  = 0;
-      val = rand()%BUFFER_SIZE; //random °ª ÇÒ´ç
-      if(memory_test_input[val] == 'X') //ÇØ´ç ÀÎµ¦½º¿¡ X°¡ ÀÖ´Ù¸é ?
+      val = rand()%BUFFER_SIZE; //random ê°’ í• ë‹¹
+      if(memory_test_input[val] == 'X') //í•´ë‹¹ ì¸ë±ìŠ¤ì— Xê°€ ìˆë‹¤ë©´ ?
       {
-        printf("-1\n"); //ÀÌ¹Ì °ªÀÌ ÀÖÀ¸¹Ç·Î -1 Ãâ·Â
+        printf("-1\n"); //ì´ë¯¸ ê°’ì´ ìˆìœ¼ë¯€ë¡œ -1 ì¶œë ¥
       }
-      else //ºñ¾î ÀÖ´Â °ªÀÌ¶ó¸é
+      else //ë¹„ì–´ ìˆëŠ” ê°’ì´ë¼ë©´
       {
-        memory_test_input[val] = 'X'; //ÇØ´ç ÀÎµ¦½º¿¡ X ¹®ÀÚ »ğÀÔ
-        printf("fit index : %d\n",val); //ÀÎµ¦½º ¹øÈ£ Ãâ·Â
+        memory_test_input[val] = 'X'; //í•´ë‹¹ ì¸ë±ìŠ¤ì— X ë¬¸ì ì‚½ì…
+        printf("fit index : %d\n",val); //ì¸ë±ìŠ¤ ë²ˆí˜¸ ì¶œë ¥
       }
     }
-    status_print(memory_test_input); //¸Ş¸ğ¸® »óÅÂ Ãâ·Â
+    status_print(memory_test_input); //ë©”ëª¨ë¦¬ ìƒíƒœ ì¶œë ¥
     return 0;
 }
 
 int FIRST_FIT_FREE(char* memory_test_input, char data_index, char data_size){
     for(int i = 0; i < data_size; i++)
     {
-      if(memory_test_input[data_index] == 'X') //ÇØ´ç ÀÎµ¦½º°ªÀÌ X±âÈ£¶ó¸é
+      if(memory_test_input[data_index] == 'X') //í•´ë‹¹ ì¸ë±ìŠ¤ê°’ì´ Xê¸°í˜¸ë¼ë©´
       {
-        memory_test_input[data_index] = ' '; //°ø¹éÀ¸·Î ÇÒ´ç
-        printf("free index : %d\n",data_index); //ÀÎµ¦½º ¹øÈ£ Ãâ·Â
+        memory_test_input[data_index] = ' '; //ê³µë°±ìœ¼ë¡œ í• ë‹¹
+        printf("free index : %d\n",data_index); //ì¸ë±ìŠ¤ ë²ˆí˜¸ ì¶œë ¥
       }
-      else //ÇØ´ç ÀÎµ¦½º¿¡ X±âÈ£°¡ ¾ø´Ù¸é -> ¾û¶×ÇÑ °÷ ¼Ò¸êÇÑ °ÍÀÓ
+      else //í•´ë‹¹ ì¸ë±ìŠ¤ì— Xê¸°í˜¸ê°€ ì—†ë‹¤ë©´ -> ì—‰ëš±í•œ ê³³ ì†Œë©¸í•œ ê²ƒì„
       {
-        printf("-1\n"); //-1Ãâ·Â
+        printf("-1\n"); //-1ì¶œë ¥
       }
-      data_index++; //ÀÎµ¦½º++ÇØ¼­ ¸Ş¸ğ¸® ¹è¿­ÀÇ ÀÎµ¦½º Áõ°¡½ÃÄÑÁÜ
+      data_index++; //ì¸ë±ìŠ¤++í•´ì„œ ë©”ëª¨ë¦¬ ë°°ì—´ì˜ ì¸ë±ìŠ¤ ì¦ê°€ì‹œì¼œì¤Œ
     }
-    status_print(memory_test_input);//¸¶Âù°¡Áö·Î ÇöÀç »óÅÂ Ãâ·Â ÇÔ¼ö È£Ãâ
+    status_print(memory_test_input);//ë§ˆì°¬ê°€ì§€ë¡œ í˜„ì¬ ìƒíƒœ ì¶œë ¥ í•¨ìˆ˜ í˜¸ì¶œ
     return 0;
 }
 
@@ -125,10 +125,10 @@ int main (void)
 {
     char *string = (char*)malloc(sizeof(char)*10);
     printf("input string : ");
-    fgets(string, 10, stdin); //ÀÔ·Â¹Ş´Â Å©±â¸¦ Á¤ÇØÁØ´Ù.
+    fgets(string, 10, stdin); //ì…ë ¥ë°›ëŠ” í¬ê¸°ë¥¼ ì •í•´ì¤€ë‹¤.
     printf("%s\n", string);
     free(string);
-    printf("%s\n", string); //¹®ÀÚ¿­ ÂïÀ¸¸é ¾²·¹±â°ª ³ª¿È freeÇß±â ¶§¹®
+    printf("%s\n", string); //ë¬¸ìì—´ ì°ìœ¼ë©´ ì“°ë ˆê¸°ê°’ ë‚˜ì˜´ freeí–ˆê¸° ë•Œë¬¸
     return 0;
 }
 #endif // 1
@@ -138,10 +138,10 @@ int main(void)
 {
     char *string = (char *)malloc(sizeof(char)*5);
     printf("input string : ");
-    fgets(string, 6, stdin);  //fgets·Î½á ÀÔ·Â¹Ş´Â Å©±â¸¦ Á¤ÇØÁØ´Ù. null Æ÷ÇÔ
+    fgets(string, 6, stdin);  //fgetsë¡œì¨ ì…ë ¥ë°›ëŠ” í¬ê¸°ë¥¼ ì •í•´ì¤€ë‹¤. null í¬í•¨
     printf("%s\n", string);
-    string = realloc(string, 10); //Å©±â¸¦ Àç¼³Á¤ÇßÀ» ¶§
-    printf("%s\n", string); //¹®ÀÚ¿­ Á¤º¸°¡ ³²¾Æ ÀÖ´ÂÁö È®ÀÎ -> ³²¾Æ ÀÖÀ½
+    string = realloc(string, 10); //í¬ê¸°ë¥¼ ì¬ì„¤ì •í–ˆì„ ë•Œ
+    printf("%s\n", string); //ë¬¸ìì—´ ì •ë³´ê°€ ë‚¨ì•„ ìˆëŠ”ì§€ í™•ì¸ -> ë‚¨ì•„ ìˆìŒ
     free(string);
     return 0;
 }
